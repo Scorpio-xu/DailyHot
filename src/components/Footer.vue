@@ -8,6 +8,12 @@
         v-html="packageJson.author"
         @click="jumpLink(packageJson.github)"
       />
+      <n-text
+        class="author"
+        :depth="3"
+        v-html="user"
+        @click="jumpLink('https://xuqiming.tech/')"
+      />
     </div>
     <n-text
       v-if="icp"
@@ -23,6 +29,7 @@
 import packageJson from "@/../package.json";
 
 const icp = ref(import.meta.env.VITE_ICP ? import.meta.env.VITE_ICP : null);
+const user = "User: CoderKim";
 
 // 链接跳转
 const jumpLink = (url) => {
@@ -44,7 +51,7 @@ footer {
     margin-bottom: 4px;
     .description {
       &::after {
-        content: "@ Copyright By";
+        content: "@ Made By";
         margin: 0 6px;
       }
     }

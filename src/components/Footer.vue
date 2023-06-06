@@ -5,14 +5,15 @@
       <n-text
         class="author"
         :depth="3"
-        v-html="packageJson.author"
-        @click="jumpLink(packageJson.github)"
+        v-html="user"
+        @click="jumpLink('https://xuqiming.tech/')"
       />
+      <n-text class="author" v-html="info" />
       <n-text
         class="author"
         :depth="3"
-        v-html="user"
-        @click="jumpLink('https://xuqiming.tech/')"
+        v-html="packageJson.author"
+        @click="jumpLink(packageJson.github)"
       />
     </div>
     <n-text
@@ -29,7 +30,8 @@
 import packageJson from "@/../package.json";
 
 const icp = ref(import.meta.env.VITE_ICP ? import.meta.env.VITE_ICP : null);
-const user = "User: CoderKim";
+const user = "CoderKim";
+const info = " Made By ";
 
 // 链接跳转
 const jumpLink = (url) => {
@@ -51,7 +53,7 @@ footer {
     margin-bottom: 4px;
     .description {
       &::after {
-        content: "@ Made By";
+        content: "@ ";
         margin: 0 6px;
       }
     }
@@ -59,9 +61,6 @@ footer {
   .author {
     cursor: pointer;
     transition: all 0.3s;
-    &:hover {
-      color: var(--n-code-text-color);
-    }
   }
   .icp {
     font-size: 13px;
